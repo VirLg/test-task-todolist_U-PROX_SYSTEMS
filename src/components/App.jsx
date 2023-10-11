@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { add } from 'redux/slice';
 import TodoList from './todo/TodoList';
 import Modal from './modal/Modal';
-import { allSelectors } from 'redux/selectors';
-import Button from './button';
 import { modalSelector } from 'redux/selectors';
 import { modalShow } from 'redux/slice';
 export const App = () => {

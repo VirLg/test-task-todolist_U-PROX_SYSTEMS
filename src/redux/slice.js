@@ -6,7 +6,6 @@ const todoSlice = createSlice({
   reducers: {
     add: (state, action) => [...state, action.payload],
     remove: (state, action) => state.filter(el => el.id !== action.payload),
-
     togle: (state, action) =>
       state.map(el => {
         if (el.id === action.payload) {
@@ -16,25 +15,14 @@ const todoSlice = createSlice({
         }
       }),
 
-    // filter: (state, action) => {},
     amend: (state, action) => {
       console.log('action', action.payload);
     },
+    activIDX: (state, action) => {},
   },
 });
-
-const sortSlice = createSlice({
-  name: 'filter',
-  initialState: '',
-  reducers: {
-    sort: (_, action) => action.payload,
-  },
-});
-
-export const { sort } = sortSlice.actions;
-export const filterReducer = sortSlice.reducer;
-
-export const { add, remove, togle, filter, amend } = todoSlice.actions;
+export const { add, remove, togle, filter, amend, activIDX } =
+  todoSlice.actions;
 export const todoReducer = todoSlice.reducer;
 
 const modalSlice = createSlice({
@@ -46,3 +34,13 @@ const modalSlice = createSlice({
 });
 export const { modalShow } = modalSlice.actions;
 export const modalReducer = modalSlice.reducer;
+
+const sortSlice = createSlice({
+  name: 'filter',
+  initialState: '',
+  reducers: {
+    sort: (_, action) => action.payload,
+  },
+});
+export const { sort } = sortSlice.actions;
+export const filterReducer = sortSlice.reducer;
