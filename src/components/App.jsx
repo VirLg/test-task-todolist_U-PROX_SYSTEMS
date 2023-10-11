@@ -2,6 +2,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import Form from './Form/Form';
 import { useDispatch } from 'react-redux';
 import { add } from 'redux/slice';
+import TodoList from './todo/TodoList';
 
 export const App = () => {
   const dispath = useDispatch();
@@ -26,6 +27,7 @@ export const App = () => {
       }}
     >
       <Form addTask={addTask} />
+      <TodoList />
     </div>
   );
 };
