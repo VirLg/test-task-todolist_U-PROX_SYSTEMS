@@ -5,7 +5,7 @@ const todoSlice = createSlice({
   initialState: [],
   reducers: {
     add: (state, action) => [...state, action.payload],
-    remove: (state, action) => {},
+    remove: (state, action) => [...action.payload],
     togle: (state, action) => {},
     filter: (state, action) => {},
     amend: (state, action) => {},

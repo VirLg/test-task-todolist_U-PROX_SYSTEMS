@@ -6,9 +6,10 @@ const Form = ({ addTask }) => {
   const handleSbmit = e => {
     e.preventDefault();
     addTask({ name, textCase });
+    setName('');
+    setTextCase('');
   };
   const handleChange = e => {
-    console.log('first', e.target.value);
     e.target.name === 'name'
       ? setName(e.target.value)
       : setTextCase(e.target.value);
@@ -18,7 +19,6 @@ const Form = ({ addTask }) => {
       <input onChange={handleChange} name="name" value={name} />
       <input onChange={handleChange} name="textCase" value={textCase} />
       <button>Add Task</button>
-      <button>Delete</button>
     </form>
   );
 };
