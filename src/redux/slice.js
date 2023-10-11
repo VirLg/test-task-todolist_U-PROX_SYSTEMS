@@ -17,7 +17,9 @@ const todoSlice = createSlice({
       }),
 
     // filter: (state, action) => {},
-    amend: (state, action) => {},
+    amend: (state, action) => {
+      console.log('action', action.payload);
+    },
   },
 });
 

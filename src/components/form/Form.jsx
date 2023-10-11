@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { allSelectors } from 'redux/selectors';
 
 const Form = ({ addTask, updateTask }) => {
   const [name, setName] = useState('');
   const [textCase, setTextCase] = useState('');
-  const allTodo = useSelector(allSelectors);
-
-  console.log('allTodo', allTodo);
-  const changeTask = () => {
-    console.log('updateTask', updateTask);
-  };
 
   const handleSbmit = e => {
     e.preventDefault();
@@ -23,7 +15,14 @@ const Form = ({ addTask, updateTask }) => {
       ? setName(e.target.value)
       : setTextCase(e.target.value);
   };
-
+  const handleUpdate = e => {
+    e.target.name === 'name'
+      ? setName(e.target.value)
+      : setTextCase(e.target.value);
+    updateTask({ name, textCase });
+    setName('');
+    setTextCase('');
+  };
   return (
     <>
       <form onSubmit={handleSbmit}>
@@ -31,6 +30,7 @@ const Form = ({ addTask, updateTask }) => {
         <input onChange={handleChange} name="textCase" value={textCase} />
 
         <button>Add Task</button>
+        <button onClick={handleUpdate}>Update Task</button>
       </form>
     </>
   );

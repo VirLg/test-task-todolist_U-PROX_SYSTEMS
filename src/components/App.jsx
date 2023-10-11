@@ -10,9 +10,9 @@ import { modalSelector } from 'redux/selectors';
 import { modalShow } from 'redux/slice';
 export const App = () => {
   const show = useSelector(modalSelector);
-  console.log('first', show);
+
   const dispath = useDispatch();
-  const allTodo = useSelector(allSelectors);
+
   const addTask = ({ name, textCase }) => {
     const todo = {
       id: nanoid(),
@@ -23,9 +23,7 @@ export const App = () => {
     dispath(add(todo));
     return todo;
   };
-  const updateTask = () => {
-    return allTodo[0];
-  };
+  const updateTask = ({ name, textCase }) => {};
 
   return (
     <div>

@@ -1,17 +1,17 @@
 import React from 'react';
 
-const TodoItem = ({ el, idx, removeTodo, checked, update }) => {
+const TodoItem = ({ el, idx, removeTodo, checked, updateTodo }) => {
   const { id, name, textCase, complited } = el;
-
+  console.log('first', updateTodo);
   return (
     <div
       style={{
         display: 'flex',
-        height: '30px',
-        alignSelf: 'baseLine',
+        height: '40px',
+        // alignSelf: 'baseLine',
         outline: '1px solid red',
       }}
-      onClick={() => update(idx)}
+      onClick={() => updateTodo(idx)}
     >
       <p>{name}</p>
       <p>{textCase}</p>
