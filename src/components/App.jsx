@@ -11,6 +11,7 @@ export const App = () => {
       id: nanoid(),
       name,
       textCase,
+      complited: false,
     };
     dispath(add(todo));
     return todo;

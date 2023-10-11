@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const Form = ({ addTask }) => {
   const [name, setName] = useState('');
   const [textCase, setTextCase] = useState('');
+
   const handleSbmit = e => {
     e.preventDefault();
     addTask({ name, textCase });
@@ -18,6 +19,7 @@ const Form = ({ addTask }) => {
     <form onSubmit={handleSbmit}>
       <input onChange={handleChange} name="name" value={name} />
       <input onChange={handleChange} name="textCase" value={textCase} />
+
       <button>Add Task</button>
     </form>
   );
