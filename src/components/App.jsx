@@ -3,6 +3,7 @@ import Form from './Form/Form';
 import { useDispatch } from 'react-redux';
 import { add } from 'redux/slice';
 import TodoList from './todo/TodoList';
+import Modal from './modal/Modal';
 
 export const App = () => {
   const dispath = useDispatch();
@@ -19,8 +20,9 @@ export const App = () => {
 
   return (
     <div>
-      <Form addTask={addTask} />
+      <Modal>{<Form addTask={addTask} />}</Modal>
       <TodoList />
     </div>
   );
 };
+//
