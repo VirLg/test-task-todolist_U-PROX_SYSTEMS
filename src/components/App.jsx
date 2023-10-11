@@ -31,7 +31,11 @@ export const App = () => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        padding: '8px',
+      }}
+    >
       {show && (
         <Modal>
           <Form addTask={addTask} updateTask={updateTask} />
