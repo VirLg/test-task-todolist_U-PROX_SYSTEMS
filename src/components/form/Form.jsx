@@ -16,6 +16,7 @@ const Form = ({ addTask, updateTask }) => {
       : setTextCase(e.target.value);
   };
   const handleUpdate = e => {
+    console.log('first', e.target.value);
     e.target.name === 'name'
       ? setName(e.target.value)
       : setTextCase(e.target.value);

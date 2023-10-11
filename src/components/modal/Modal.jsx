@@ -1,10 +1,12 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { modalShow } from 'redux/slice';
+const ModalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ children }) => {
   const dispath = useDispatch();
-  return (
+  return createPortal(
     <div>
       <div className="modal-dialog">
         <div className="modal-content">
@@ -32,7 +34,8 @@ const Modal = ({ children }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    ModalRoot
   );
 };
 

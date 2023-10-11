@@ -1,17 +1,16 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { allSelectors, modalSelector } from 'redux/selectors';
-import { amend, modalShow, remove, togle } from 'redux/slice';
+import { allSelectors } from 'redux/selectors';
+import { modalShow, remove, togle } from 'redux/slice';
 
-const TodoList = () => {
-  const show = useSelector(modalSelector);
+const TodoList = ({ activIndex }) => {
   const allTodo = useSelector(allSelectors);
 
   const dispath = useDispatch();
   const updateTodo = idx => {
     dispath(modalShow(true));
-    console.log('idx', idx);
+    activIndex(idx);
   };
   return allTodo.map((el, idx) => (
     <div key={el.id}>

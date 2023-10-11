@@ -15,19 +15,23 @@ const todoSlice = createSlice({
         }
       }),
 
-    amend: (state, action) => {
-      console.log('action', action.payload);
+    amend: (state, { payload }) => {
+      console.log('first', state[payload.idx]);
+      state[payload.idx] = {
+        ...state[payload.idx],
+        name: payload.name,
+        textCase: payload.textCase,
+      };
     },
-    activIDX: (state, action) => {},
+    // activIDX: (state, action) => {},
   },
 });
-export const { add, remove, togle, filter, amend, activIDX } =
-  todoSlice.actions;
+export const { add, remove, togle, filter, amend } = todoSlice.actions;
 export const todoReducer = todoSlice.reducer;
 
 const modalSlice = createSlice({
   name: 'modal',
-  initialState: true,
+  initialState: false,
   reducers: {
     modalShow: (state, action) => (state = action.payload),
   },

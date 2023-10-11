@@ -2,7 +2,7 @@ import React from 'react';
 
 const TodoItem = ({ el, idx, removeTodo, checked, updateTodo }) => {
   const { id, name, textCase, complited } = el;
-  console.log('first', updateTodo);
+
   return (
     <div
       style={{
