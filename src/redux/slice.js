@@ -16,18 +16,31 @@ const todoSlice = createSlice({
         }
       }),
 
-    filter: (state, action) => {},
+    // filter: (state, action) => {},
     amend: (state, action) => {},
   },
 });
+
+const sortSlice = createSlice({
+  name: 'filter',
+  initialState: '',
+  reducers: {
+    sort: (_, action) => action.payload,
+  },
+});
+
+export const { sort } = sortSlice.actions;
+export const filterReducer = sortSlice.reducer;
+
 export const { add, remove, togle, filter, amend } = todoSlice.actions;
 export const todoReducer = todoSlice.reducer;
-// state.map(el =>
-//   el.id === action.payload
-//     ? {
-//         ...el,
-//         aaa: !el.complited,
-//         complited: !el.complited,
-//       }
-//     : el
-// );
+
+const modalSlice = createSlice({
+  name: 'modal',
+  initialState: true,
+  reducers: {
+    modalShow: (state, action) => (state = action.payload),
+  },
+});
+export const { modalShow } = modalSlice.actions;
+export const modalReducer = modalSlice.reducer;

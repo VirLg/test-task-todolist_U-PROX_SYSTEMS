@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TodoItem = ({ el, removeTodo, update }) => {
+const TodoItem = ({ el, idx, removeTodo, checked, update }) => {
   const { id, name, textCase, complited } = el;
-  console.log('complited', complited);
+
   return (
     <div
       style={{
@@ -11,10 +11,11 @@ const TodoItem = ({ el, removeTodo, update }) => {
         alignSelf: 'baseLine',
         outline: '1px solid red',
       }}
+      onClick={() => update(idx)}
     >
       <p>{name}</p>
       <p>{textCase}</p>
-      <input type="checkbox" onChange={() => update(id)} checked={complited} />
+      <input type="checkbox" onChange={() => checked(id)} checked={complited} />
       <button type="button" onClick={() => removeTodo(id)}>
         Delete
       </button>
