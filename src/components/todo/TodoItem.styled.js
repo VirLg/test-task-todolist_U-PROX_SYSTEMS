@@ -16,3 +16,6 @@ export const Button = styled.button`
   height: 20px;
   margin-right: 17px;
 `;
+export const TodoDivActiv = styled.div`
+  border: blue solid 2px;
+`;

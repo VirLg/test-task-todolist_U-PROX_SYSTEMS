@@ -1,12 +1,11 @@
 import { nanoid } from '@reduxjs/toolkit';
 import Form from './Form/Form';
 import { useDispatch, useSelector } from 'react-redux';
-import { add, amend } from 'redux/slice';
+import { activ, add, amend } from 'redux/slice';
 import TodoList from './todo/TodoList';
 import Modal from './modal/Modal';
 import { activIdxSelector, allSelectors, modalSelector } from 'redux/selectors';
 import { modalShow } from 'redux/slice';
-import { useState } from 'react';
 
 export const App = () => {
   const show = useSelector(modalSelector);
@@ -48,6 +47,7 @@ export const App = () => {
       }
     });
     dispath(amend(newArr));
+    dispath(activ(null));
   };
 
   return (

@@ -15,15 +15,15 @@ const Form = ({ addTask, updateTask }) => {
       ? setName(e.target.value)
       : setTextCase(e.target.value);
   };
-  const handleUpdate = e => {
-    console.log('first', e.target.value);
-    e.target.name === 'name'
-      ? setName(e.target.value)
-      : setTextCase(e.target.value);
-    updateTask({ name, textCase });
-    setName('');
-    setTextCase('');
-  };
+  // const handleUpdate = e => {
+  //   console.log('first', e.target.value);
+  //   e.target.name === 'name'
+  //     ? setName(e.target.value)
+  //     : setTextCase(e.target.value);
+  //   updateTask({ name: 5, textCase: 10 });
+  //   setName('');
+  //   setTextCase('');
+  // };
   return (
     <>
       <form onSubmit={handleSbmit}>
@@ -31,7 +31,9 @@ const Form = ({ addTask, updateTask }) => {
         <input onChange={handleChange} name="textCase" value={textCase} />
 
         <button>Add Task</button>
-        <button onClick={handleUpdate}>Update Task</button>
+        {/* <button className="updateBTN" disabled={false} onClick={handleUpdate}>
+          Update Task
+        </button> */}
       </form>
     </>
   );
