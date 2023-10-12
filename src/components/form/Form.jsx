@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { activIdxSelector } from 'redux/selectors';
 
 const Form = ({ addTask, updateTask }) => {
+  const activIdx = useSelector(activIdxSelector);
   const [name, setName] = useState('');
   const [textCase, setTextCase] = useState('');
 
@@ -15,25 +18,14 @@ const Form = ({ addTask, updateTask }) => {
       ? setName(e.target.value)
       : setTextCase(e.target.value);
   };
-  // const handleUpdate = e => {
-  //   console.log('first', e.target.value);
-  //   e.target.name === 'name'
-  //     ? setName(e.target.value)
-  //     : setTextCase(e.target.value);
-  //   updateTask({ name: 5, textCase: 10 });
-  //   setName('');
-  //   setTextCase('');
-  // };
+
   return (
     <>
       <form onSubmit={handleSbmit}>
         <input onChange={handleChange} name="name" value={name} />
         <input onChange={handleChange} name="textCase" value={textCase} />
 
-        <button>Add Task</button>
-        {/* <button className="updateBTN" disabled={false} onClick={handleUpdate}>
-          Update Task
-        </button> */}
+        <button>{activIdx !== null ? 'Update Task' : 'Add Task'}</button>
       </form>
     </>
   );

@@ -1,18 +1,9 @@
 import React from 'react';
 import { TodoDiv, Button } from './TodoItem.styled';
-import classNames from 'classnames';
-import { useSelector } from 'react-redux';
-import { activIdxSelector, allSelectors } from 'redux/selectors';
 
 const TodoItem = ({ el, idx, removeTodo, checked, updateTodo }) => {
   const { id, name, textCase, complited } = el;
-  const activIdx = useSelector(activIdxSelector);
-  const allTodo = useSelector(allSelectors);
-  // const makeClassNamesActiv = () => {
-  //   classNames('todo', {
-  //     todoDivActiv: allTodo[activIdx],
-  //   });
-  // };
+
   return (
     <TodoDiv className="todo" onClick={() => updateTodo(idx)}>
       <h4>name: {name}</h4>
