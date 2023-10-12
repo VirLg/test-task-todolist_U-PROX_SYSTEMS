@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { activIdxSelector } from 'redux/selectors';
 
-const Form = ({ addTask, updateTask }) => {
+const Form = ({ addTask }) => {
   const activIdx = useSelector(activIdxSelector);
   const [name, setName] = useState('');
   const [textCase, setTextCase] = useState('');
