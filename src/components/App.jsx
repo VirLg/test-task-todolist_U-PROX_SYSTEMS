@@ -4,30 +4,50 @@ import { useDispatch, useSelector } from 'react-redux';
 import { add, amend } from 'redux/slice';
 import TodoList from './todo/TodoList';
 import Modal from './modal/Modal';
-import { modalSelector } from 'redux/selectors';
+import { activIdxSelector, allSelectors, modalSelector } from 'redux/selectors';
 import { modalShow } from 'redux/slice';
 import { useState } from 'react';
 
 export const App = () => {
   const show = useSelector(modalSelector);
-  const [idx, setIdx] = useState(null);
+  const allTodo = useSelector(allSelectors);
+  const activIdx = useSelector(activIdxSelector);
+
   const dispath = useDispatch();
 
   const addTask = ({ name, textCase }) => {
-    const todo = {
-      id: nanoid(),
-      name,
-      textCase,
-      complited: false,
-    };
-    dispath(add(todo));
-    return todo;
+    if (name === '' || textCase === '') {
+      alert('Input fields are empty');
+      return;
+    }
+    if (activIdx === null) {
+      const todo = {
+        id: nanoid(),
+        name,
+        textCase,
+        complited: false,
+      };
+      dispath(add(todo));
+      return todo;
+    } else {
+      updateTask(name, textCase);
+    }
   };
-  const activIndex = idx => {
-    setIdx(idx);
-  };
-  const updateTask = ({ name, textCase }) => {
-    dispath(amend({ name, textCase, idx }));
+
+  const updateTask = (name, textCase) => {
+    const newArr = allTodo.map((el, i) => {
+      console.log('aa', el);
+      if (i === activIdx) {
+        return {
+          ...el,
+          name,
+          textCase,
+        };
+      } else {
+        return el;
+      }
+    });
+    dispath(amend(newArr));
   };
 
   return (
@@ -41,8 +61,18 @@ export const App = () => {
           <Form addTask={addTask} updateTask={updateTask} />
         </Modal>
       )}
-      <TodoList activIndex={activIndex} />
-      <button onClick={() => dispath(modalShow(true))}>Create ToDo</button>
+      <TodoList />
+      <button
+        disabled={show}
+        style={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          display: 'block',
+        }}
+        onClick={() => dispath(modalShow(true))}
+      >
+        Create ToDo
+      </button>
     </div>
   );
 };
