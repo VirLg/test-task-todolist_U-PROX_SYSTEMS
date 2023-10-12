@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { activIdxSelector, allSelectors } from 'redux/selectors';
 import { activ, modalShow, remove, togle } from 'redux/slice';
 
-const TodoList = ({ activIndex }) => {
+const TodoList = () => {
   const allTodo = useSelector(allSelectors);
   const activIdx = useSelector(activIdxSelector);
   const dispath = useDispatch();
