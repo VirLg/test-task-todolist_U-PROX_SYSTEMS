@@ -1,5 +1,5 @@
 import { nanoid } from '@reduxjs/toolkit';
-import Form from './Form/Form';
+import Form from './form/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { activ, add, amend } from 'redux/slice';
 import TodoList from './todo/TodoList';
