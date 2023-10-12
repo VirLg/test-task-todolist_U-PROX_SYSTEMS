@@ -35,7 +35,6 @@ export const App = () => {
 
   const updateTask = (name, textCase) => {
     const newArr = allTodo.map((el, i) => {
-      console.log('aa', el);
       if (i === activIdx) {
         return {
           ...el,

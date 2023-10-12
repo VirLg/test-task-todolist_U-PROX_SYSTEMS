@@ -11,6 +11,7 @@ const TodoList = ({ activIndex }) => {
   const updateTodo = idx => {
     dispath(modalShow(true));
   };
+  console.log('updateTodo', updateTodo);
   return allTodo.map((el, idx) => (
     <div
       key={el.id}
